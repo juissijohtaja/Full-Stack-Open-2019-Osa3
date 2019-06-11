@@ -1,0 +1,12 @@
+{
+  "name": "full-stack-open-2019-osa3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
