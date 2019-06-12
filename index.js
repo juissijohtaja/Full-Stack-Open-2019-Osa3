@@ -28,10 +28,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/info', (req, res) => {
-    const pageContent = (
-        `<p>Phonebook has info for ${persons.length} people</p>
-        <p>${Date()}</p>`
-        )
+    const pageContent = (`
+        <p>Phonebook has info for ${persons.length} people</p>
+        <p>${new Date()}</p>
+        `)
     res.send(pageContent)
   })
 
@@ -63,21 +63,36 @@ const generateId = () => {
       : 0
     return maxId + 1
   }
+
+const generateIdRandom = () => {
+    return Math.floor(1 + Math.random() * (100000 + persons.length))
+}
   
   app.post('/api/persons', (request, response) => {
     const body = request.body
     console.log("body", body)
+
+    const personExists = persons.some(person => person.name === body.name)
+    console.log("personExists", personExists)
   
     if (!body.name) {
       return response.status(400).json({ 
         error: 'name missing' 
+      })
+    } else if (!body.number) {
+      return response.status(400).json({ 
+        error: 'number missing' 
+      })
+    } else if (personExists) {
+      return response.status(400).json({ 
+        error: 'name must be unique'
       })
     }
   
     const person = {
       name: body.name,
       number: body.number,
-      id: generateId(),
+      id: generateIdRandom()
     }
     console.log("person", person)
   
