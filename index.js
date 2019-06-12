@@ -28,7 +28,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/info', (req, res) => {
-    const pageContent = '<h1>Infosivu kakka</h1>'
+    const pageContent = (
+        `<p>Phonebook has info for ${persons.length} people</p>
+        <p>${Date()}</p>`
+        )
     res.send(pageContent)
   })
 
