@@ -10,6 +10,7 @@ app.use(morgan(':method :url :body :status :res[content-length] - :response-time
 
 const cors = require('cors')
 app.use(cors())
+app.use(express.static('build'))
 
 let persons = [
       {
