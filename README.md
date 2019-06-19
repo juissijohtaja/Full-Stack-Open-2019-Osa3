@@ -1,5 +1,5 @@
-App:
+APP:
 https://thawing-brook-56047.herokuapp.com/
 
-Backend:
+API:
 https://thawing-brook-56047.herokuapp.com/api/persons
